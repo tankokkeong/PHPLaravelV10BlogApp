@@ -15,4 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('Login');
+
+Route::get('/SignUp', function () {
+    return view('signup');
+})->name('SignUp');

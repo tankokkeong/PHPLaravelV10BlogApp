@@ -6,7 +6,7 @@
     <title>Login</title>
 
     @extends('layouts.header')
-    <link rel="stylesheet" href={{ Vite::asset('resources/css/login.css') }}>
+    @vite('resources/js/app.js')
 </head>
 <body>
     <div id="login-container">
@@ -21,20 +21,15 @@
                     </div>
 
                     <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="password" onkeyup="enterSignIn()">
-                    No account? <a href="signup">Sign Up</a> now!
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="password" onkeyup="enterSignIn()">
+                        No account? <a href="{{ route('SignUp') }}">Sign Up</a> now!
                     </div>
                     
                     <div class="form-group" id="error-prompt" style="color:red;"></div>
 
                     <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-primary" onclick="login()">Login</button>
-
-                    <div class="text-info" id="login-loader" role="status" style="display: none;">
-                        <span class="mt-3 ml-1 spinner-border spinner-border-sm"></span>
-                        Loading...
-                    </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                     
                 </div>
