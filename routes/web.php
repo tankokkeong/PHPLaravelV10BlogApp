@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,11 @@ Route::get('/', function () {
 Route::get('/SignUp', function () {
     return view('signup');
 })->name('SignUp');
+
+Route::get('/Welcome', function () {
+    return view('welcome');
+})->name('Welcome')->middleware('auth');
+
+Route::post('/SignUp', [UserController::class, 'SignUp']);
+Route::post('/Login', [UserController::class, 'Login']);
+Route::post('/Logout', [UserController::class, 'Logout']);

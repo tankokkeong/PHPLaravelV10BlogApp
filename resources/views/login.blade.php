@@ -15,23 +15,33 @@
                 <h1 class="text-center">Login</h1>
 
                 <div class="input-container">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="email" onkeyup="enterSignIn()">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="password" onkeyup="enterSignIn()">
-                        No account? <a href="{{ route('SignUp') }}">Sign Up</a> now!
-                    </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3">
+                            <ul class="pl-3">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     
-                    <div class="form-group" id="error-prompt" style="color:red;"></div>
+                    <form action="/Login" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
 
-                    <div class="form-group mt-3">
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </div>
-                    
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" name="password">
+                            No account? <a href="{{ route('SignUp') }}">Sign Up</a> now!
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             
