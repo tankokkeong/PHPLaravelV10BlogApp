@@ -16,16 +16,20 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('login');
-})->name('Login');
+})->name('Login')->middleware('guest');
 
 Route::get('/SignUp', function () {
     return view('signup');
-})->name('SignUp');
+})->name('SignUp')->middleware('guest');
 
-Route::get('/Welcome', function () {
-    return view('welcome');
-})->name('Welcome')->middleware('auth');
+Route::get('/Home', function () {
+    return view('home');
+})->name('Home')->middleware('auth');
 
 Route::post('/SignUp', [UserController::class, 'SignUp']);
 Route::post('/Login', [UserController::class, 'Login']);
 Route::post('/Logout', [UserController::class, 'Logout']);
+
+Route::fallback(function () {
+    return view('Home');
+});
