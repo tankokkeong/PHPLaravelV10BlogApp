@@ -24,12 +24,12 @@
                             </ul>
                         </div>
                     @endif
-                    
+
                     <form action="/Login" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" name="email">
+                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                         </div>
 
                         <div class="form-group">

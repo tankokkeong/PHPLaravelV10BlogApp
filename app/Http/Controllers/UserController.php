@@ -32,10 +32,6 @@ class UserController extends Controller
         ]);
 
         $validator = Validator::make($request->input(), $rules);
-        $incomingFields = $request->validate([
-            'email' =>  ['required'],
-            'password' => ['required'],
-        ]);
 
         if(auth()->attempt(['email' => $request->input('email'),  'password' => $request->input('password') ])){
             $request->session()->regenerate();
@@ -43,7 +39,7 @@ class UserController extends Controller
         }
         else{
             $validator->errors()->add('customError', 'Incorrect email or password!');
-            return view('Login')->withErrors($validator);
+            return redirect()->route('Login')->withErrors($validator)->withInput();
         }
 
     }

@@ -29,12 +29,12 @@
                         @csrf
                         <div class="form-group mt-2">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" name="email" aria-describedby="emailHelp">
+                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                         </div>
 
                         <div class="form-group mt-2">
                         <label for="exampleInputEmail1">Full Name</label>
-                        <input type="text" class="form-control" name="name" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" name="name"  value="{{ old('name') }}">
                         </div>
 
                         <div class="form-group mt-2">
